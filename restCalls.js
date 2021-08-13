@@ -1,5 +1,9 @@
 const form = document.getElementById("iptForm");
 
+/*
+ * Sends a POST rest call to the Camunda engine to start a process with the variables from the form given by the user
+ * Takes the response id (id of the process) and calls the fetchData function. 
+*/
 function start()
 {
 	 const url = 'http://localhost:8080/engine-rest/process-definition/key/iptForecast/start';
@@ -26,7 +30,10 @@ function start()
             .then(res => fetchData(res.id));
 }
 
-
+/*
+ * Sends a GET rest call to the Camunda engine asking for the varibles from the process with the id taken as argument. 
+ * Displays the result and insurance time in the div with id display 
+*/
 function fetchData(id) {
     console.log("START");
    
@@ -51,6 +58,9 @@ function fetchData(id) {
         console.log(error);
     });
 }
+/*
+ * Works like a main functions and starts the program
+*/
 
  form.addEventListener("submit", function(e){
     e.preventDefault();
